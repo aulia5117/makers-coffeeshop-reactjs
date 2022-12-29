@@ -15,7 +15,7 @@ export default function AdminAllMenu() {
           fetch("http://127.0.0.1:5000/get_all_item", requestOptions)
             .then(response => response.json())
             .then(result => {
-                console.log(result)
+                // console.log(result)
                 setAllMenu(result)
             })
     },[])
@@ -42,6 +42,7 @@ export default function AdminAllMenu() {
                                         <tr>
                                             <th scope="col">#</th>
                                             <th scope="col">Nama</th>
+                                            <th scope="col">Deskripsi</th>
                                             <th scope="col">Harga Per Satuan</th>
                                             <th scope="col">Kategori</th>
                                             <th scope="col">Stok Tersedia</th>

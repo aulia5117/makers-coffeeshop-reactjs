@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { Button, Modal } from "react-bootstrap";
-import AdminCompletedOrderDetail from "./AdminCompletedDetailOrder";
+import UserCompletedOrderDetail from "./UserCompletedOrderDetail";
 
 
-const AdminCompletedOrder = ({ item }) => {
+
+const UserCompletedOrder = ({ item }) => {
 
     const [orderDetail, setOrderDetail] = useState([])
 
@@ -50,7 +51,7 @@ const AdminCompletedOrder = ({ item }) => {
                                 </Modal.Header>
                                 <Modal.Body>
 
-                                    <AdminCompletedOrderDetail item={orderDetail}/>
+                                    <UserCompletedOrderDetail item={orderDetail}/>
 
                                 </Modal.Body>
                             </Modal>
@@ -63,4 +64,4 @@ const AdminCompletedOrder = ({ item }) => {
     )
 }
 
-export default AdminCompletedOrder;
+export default UserCompletedOrder;

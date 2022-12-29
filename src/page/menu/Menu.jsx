@@ -2,16 +2,38 @@
 import { useEffect, useState } from "react";
 
 import CoffeeItem from "./components/CoffeeItem";
+import { isCompositeComponent } from "react-dom/test-utils";
 
 export default function Menu() {
+    const [searchParam, setSearchParam] = useState('')
+    const [coffeeMenu, setCoffeeMenu] = useState([]);
 
-    const [coffeeMenu, setCoffeeMenu] = useState(null);
-
-    useEffect( () => {
+    const loadData = () => {
         fetch('http://127.0.0.1:5000/get_all_item')
             .then(response => response.json())
             .then(data => setCoffeeMenu(data))
+    }
+    
+    useEffect( () => {
+        loadData()
     }, [])
+
+    const handleChangeSearch = (e) => {
+        setSearchParam(e.target.value)
+    }
+
+    // const searchMenu = (e) => {
+    //     e.stopPropagation()
+
+    //     if (searchParam !== "") {
+    //         const filterMenu = coffeeMenu.filter((item) => {
+    //             return item.nama_item === searchParam
+    //         })
+    //         setCoffeeMenu(filterMenu)
+    //     } else {
+    //         loadData()
+    //     }
+    // }
 
     return (
         <div className="container py-5">
@@ -42,10 +64,10 @@ export default function Menu() {
                             <div className="d-flex">
 
                                 <div className="input-group mb-2">
-                                    <input type="text" className="form-control" id="input-search" placeholder="Search ..." />
-                                    <button  className="input-group-text bg-success text-light">
+                                    <input type="text" className="form-control" id="input-search" placeholder="Search ..." value={searchParam} onChange={(e) => handleChangeSearch(e)}/>
+                                    {/* <button  className="input-group-text bg-success text-light" onClick={(e) => searchMenu(e)}>
                                         <i className="fa fa-fw fa-search text-white"></i>
-                                    </button>
+                                    </button> */}
                                 </div>
 
                             </div>

@@ -17,7 +17,7 @@ const AdminActiveOrder = ({ item }) => {
             .then((result) => setOrderDetail(result))
     }
 
-    const handleAcceptPending = (e) => {
+    const handleFinishOrder = (e) => {
         const buttonId = e.currentTarget.id
         const requestOptions = {
             method: 'PUT',
@@ -25,15 +25,15 @@ const AdminActiveOrder = ({ item }) => {
             redirect: 'follow'
         };
 
-        fetch(`http://127.0.0.1:5000/order/check_order_pending/${buttonId}`, requestOptions)
+          fetch(`http://127.0.0.1:5000/order/check_order_activate/${buttonId}`, requestOptions)
             .then(response => response.json())
-            .then((result) => {
-                console.log(result)
-                alert(`Order Diterima`)
-                window.location.reload()
-
+            .then((result) => 
+            {
+              console.log(result)
+              alert(`Order Diselesaikan`)
+              window.location.reload()
+            
             })
-            .catch(error => console.log('error', error));
     }
 
     const handleCancelOrder = (e) => {
@@ -111,11 +111,11 @@ const AdminActiveOrder = ({ item }) => {
                                     <Modal.Title>Konfirmasi</Modal.Title>
                                 </Modal.Header>
                                 <Modal.Body>
-                                    Apakah anda yakin ingin <b>Menerima</b> pesanan ini ?
+                                    Apakah anda yakin ingin <b>Menyelesaikan</b> pesanan ini ?
                                 </Modal.Body>
                                 <Modal.Footer>
-                                    <Button id={item.order_id} size="sm" variant="success" onClick={handleAcceptPending}>
-                                        Accept
+                                    <Button id={item.order_id} size="sm" variant="success" onClick={handleFinishOrder}>
+                                        Finish
                                     </Button>
                                     <Button size="sm" variant="secondary" onClick={handleClose2}>
                                         Close

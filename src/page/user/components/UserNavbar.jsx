@@ -39,7 +39,7 @@ export default function UserNavbar() {
             
             <Dropdown className="dropdown-menu-right" direction="start">
                 <Link to='/' >
-                <i class="fa fa-home text-dark mr-3 ml-3" aria-hidden="true"></i>
+                <i className="fa fa-home text-dark mr-3 ml-3" aria-hidden="true"></i>
                 </Link>
                 
                 <Dropdown.Toggle variant="muted" id="dropdown-basic">

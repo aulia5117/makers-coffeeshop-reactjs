@@ -1,7 +1,7 @@
 import { Table } from "react-bootstrap";
 
-export default function AdminActiveDetailOrder(item) {
-    // console.log(item)
+export default function UserPendingDetailOrder(item) {
+    console.log(item)
 
     const obj = item?.item
     return (

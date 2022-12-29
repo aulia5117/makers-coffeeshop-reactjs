@@ -1,6 +1,7 @@
 
 import { useEffect, useState } from "react"
-import UserActiveOrderPending from "./components/UserActiveOrderPending"
+import UserPendingOrder from "./components/userActiveOrder components/UserPendingOrder"
+import UserProcessOrder from "./components/userActiveOrder components/UserProcessOrder"
 
 export default function UserActiveOrder() {
 
@@ -14,25 +15,26 @@ export default function UserActiveOrder() {
             const split = token.split(".");
             let parsedToken = JSON.parse(atob(split[1]));
             let userId = parsedToken["id"]
+            console.log(userId)
 
             const requestOptions = {
                 method: 'GET',
                 redirect: 'follow'
             };
-          
-          fetch(`http://127.0.0.1:5000/order/get_order/${userId}`, requestOptions)
-            .then(response => response.json())
-            .then((result) => {
-                setOrderPending(result)
-                setOrderActive(result)
-                console.log(result)
-        })
+
+            fetch(`http://127.0.0.1:5000/order/get_order/${userId}`, requestOptions)
+                .then(response => response.json())
+                .then((result) => {
+                    setOrderPending(result)
+                    setOrderActive(result)
+                    // console.log(result)
+                })
         }
-    },[])
+    }, [])
 
     return (
         <>
-            
+
             <main id="main" className="main">
 
                 <div className="pagetitle">
@@ -60,7 +62,7 @@ export default function UserActiveOrder() {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    {userOrderPending && <UserActiveOrderPending item={userOrderPending}/>}
+                                        {userOrderPending && <UserPendingOrder item={userOrderPending} />}
                                     </tbody>
                                 </table>
                                 {/* <!-- End Tables without borders --> */}
@@ -86,6 +88,7 @@ export default function UserActiveOrder() {
                                         </tr>
                                     </thead>
                                     <tbody id="order-aktif">
+                                    {userOrderActive && <UserProcessOrder item={userOrderActive} />}
                                     </tbody>
                                 </table>
                                 {/* <!-- End Tables without borders --> */}

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button, Modal } from "react-bootstrap";
-import AdminCompletedOrderDetail from "./AdminCompletedOrderDetail";
+import AdminCompletedOrderDetail from "./AdminCompletedDetailOrder";
 
 const AdminPendingOrder = ({ item }) => {
 
@@ -124,11 +124,11 @@ return (
                             </Modal.Footer>
                         </Modal>
                         <span> </span>
+
+                        {/* Cancel Order */}
                         <Button size="sm" variant="danger" onClick={handleShow3}>
                             Close
                         </Button>
-
-                        {/* Cancel Order */}
                         <Modal show={show3} onHide={handleClose3}>
                             <Modal.Header closeButton>
                                 <Modal.Title>Konfirmasi</Modal.Title>
