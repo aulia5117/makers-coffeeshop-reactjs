@@ -7,8 +7,26 @@ const AdminGetAllMenu = ({ item }) => {
     // console.log(item)
 
     const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    const handleClose = () => {
+        setShow(false)
+        setMenuDetail([])
+    };
+    
+    const handleShow = (e) => {
+        setShow(true)
+        const buttonId = e.currentTarget.id
+        // console.log(buttonId)
+            const requestOptions = {
+                method: 'GET',
+                redirect: 'follow'
+            };
+
+            fetch("http://127.0.0.1:5000/get_item/" + buttonId, requestOptions)
+                .then(response => response.json())
+                .then(result => {
+                    setMenuDetail(result)
+                })
+    };
 
     const [show3, setShow3] = useState(false);
     const handleClose3 = () => setShow3(false);
@@ -16,9 +34,9 @@ const AdminGetAllMenu = ({ item }) => {
 
     const [buttonId, setButtonId] = useState('')
 
-    const handleId = (e) => {
-        setButtonId(e.currentTarget.id)
-    }
+    // const handleId = (e) => {
+    //     setButtonId(e.currentTarget.id)
+    // }
 
     const handleDeleteItem = (e) => {
         const buttonId = e.currentTarget.id
@@ -39,31 +57,20 @@ const AdminGetAllMenu = ({ item }) => {
 
     const [menuDetail, setMenuDetail] = useState([])
 
-    const tes = (e) => {
-        const buttonId = e.currentTarget.id
-        const requestOptions = {
-            method: 'GET',
-            redirect: 'follow'
-        };
+    // const tes = (e) => {
+    //     const buttonId = e.currentTarget.id
+    //     const requestOptions = {
+    //         method: 'GET',
+    //         redirect: 'follow'
+    //     };
 
-        fetch("http://127.0.0.1:5000/get_item/" + buttonId, requestOptions)
-            .then(response => response.json())
-            .then(result => {
-                setMenuDetail(result)
+    //     fetch("http://127.0.0.1:5000/get_item/" + buttonId, requestOptions)
+    //         .then(response => response.json())
+    //         .then(result => {
+    //             setMenuDetail(result)
                 
-            })
-    }
-
-    const setCookie = (e) => {
-        const buttonId = e.currentTarget.id
-        let date = new Date();
-        date.setTime(date.getTime() + (1 * 24 * 60 * 60 * 1000));
-        const expires = "expires=" + date.toUTCString();
-        document.cookie = 'tes' + "=" + buttonId + "; " + expires + "; path=/";
-        };
-
-    console.log(menuDetail)
-
+    //         })
+    // }
 
     return (
         <>
@@ -79,13 +86,10 @@ const AdminGetAllMenu = ({ item }) => {
                     <td>{item.jumlah_terbeli} Barang</td>
                     <td>
 
-                        <Button id={item.item_id} size="sm" variant="warning" onClick={(id) => { handleShow(); tes(id) }}>
+                        <Button id={item.item_id} size="sm" variant="warning" onClick={(e) => { handleShow(e) }}>
                             Update
                         </Button>
-                        <Modal show={show} onHide={handleClose}>
-                            <AdminMenuDetail id={buttonId} menuDetail={menuDetail}/>
-                        </Modal>
-
+                        
 
                         {/* Cancel Order */}
                         <Button size="sm" variant="danger" onClick={handleShow3}>
@@ -110,6 +114,8 @@ const AdminGetAllMenu = ({ item }) => {
                     </td>
                 </tr>
             ))}
+
+            <AdminMenuDetail menuDetail={menuDetail} modalShow={show} handleClose={handleClose} buttonId={buttonId}/>
         </>
     )
 }

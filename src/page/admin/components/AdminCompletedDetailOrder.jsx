@@ -1,7 +1,7 @@
 import { Table } from "react-bootstrap";
 
 export default function AdminCompletedOrderDetail(item) {
-    // console.log(item)
+    console.log(item)
 
     const obj = item?.item
     return (

@@ -57,17 +57,14 @@ const AdminPendingOrder = ({ item }) => {
 
 
 const [show, setShow] = useState(false);
-
 const handleClose = () => setShow(false);
 const handleShow = () => setShow(true);
 
 const [show2, setShow2] = useState(false);
-
 const handleClose2 = () => setShow2(false);
 const handleShow2 = () => setShow2(true);
 
 const [show3, setShow3] = useState(false);
-
 const handleClose3 = () => setShow3(false);
 const handleShow3 = () => setShow3(true);
 

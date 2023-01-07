@@ -1,38 +1,35 @@
 import { useEffect, useState } from "react";
 import { Button, Modal } from "react-bootstrap";
 
-export default function AdminMenuDetail({ menuDetail }) {
+export default function AdminMenuDetail({ menuDetail, modalShow, handleClose, buttonId }) {
 
     const token = document.cookie
     const split = token.split(';')
-    console.log(split[1])
 
-
-    // console.log(id)
+    // console.log(buttonId)
 
     // const [menuDetail, setMenuDetail] = useState([])
 
-    // const tes = () => {
-    //     const requestOptions = {
-    //         method: 'GET',
-    //         redirect: 'follow'
-    //     };
+  
+        // if (typeof buttonId !== 'undefined') {
+        //     console.log(buttonId)
+        //     const requestOptions = {
+        //         method: 'GET',
+        //         redirect: 'follow'
+        //     };
 
-    //     fetch("http://127.0.0.1:5000/get_item/" + id, requestOptions)
-    //         .then(response => response.json())
-    //         .then(result => {
-    //             setMenuDetail(result)
-                
-    //         })
-    // }
+        //     fetch("http://127.0.0.1:5000/get_item/" + buttonId, requestOptions)
+        //         .then(response => response.json())
+        //         .then(result => {
+        //             setMenuDetail(result)
+        //             console.log(result)
+        //         })
 
+        // }
+    
 
 
     console.log(menuDetail)
-
-        
-
-    // console.log(menuDetail)
 
     const [namaItem, setNamaItem] = useState("");
     const [deskripsi, setDeskripsi] = useState("");
@@ -71,7 +68,8 @@ export default function AdminMenuDetail({ menuDetail }) {
 
     return (
         <>
-            <Modal.Header closeButton>
+            <Modal show={modalShow} onHide={handleClose}>
+                <Modal.Header closeButton>
                     <Modal.Title>Detail Item</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
@@ -97,7 +95,9 @@ export default function AdminMenuDetail({ menuDetail }) {
                         Update
                     </Button> */}
                 </Modal.Footer>
-                <span> </span>
+            </Modal>
+            <span> </span>
+
         </>
 
 

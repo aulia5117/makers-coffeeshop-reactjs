@@ -19,6 +19,7 @@ const AdminCompletedOrder = ({ item }) => {
      }
 
     const [show, setShow] = useState(false);
+    console.log(show)
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);

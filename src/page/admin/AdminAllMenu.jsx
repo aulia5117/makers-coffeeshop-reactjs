@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
-import AdminGetAllMenu from "./components/AdminGetAllMenu";
+import AdminGetAllMenu from "./components/AdminAllMenu components/AdminGetAllMenu";
+
 
 
 export default function AdminAllMenu() {

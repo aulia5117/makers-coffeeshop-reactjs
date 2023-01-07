@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
-import AdminTop5User from "./components/AdminTop5User"
-import AdminTop5Item from "./components/AdminTop5Item"
+import AdminTop5User from "./components/AdminDashboard components/AdminTop5User"
+import AdminTop5Item from "./components/AdminDashboard components/AdminTop5Item"
 
 export default function AdminDashboard() {
 

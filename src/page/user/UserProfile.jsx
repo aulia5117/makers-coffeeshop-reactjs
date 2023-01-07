@@ -1,5 +1,4 @@
 import './style.css'
-import UserSidebar from './components/UserSidebar';
 import { useEffect, useState } from 'react';
 
 function UserProfile() {
@@ -44,10 +43,6 @@ function UserProfile() {
             const myHeaders = new Headers();
             myHeaders.append("Authorization", "Basic " + btoa(username + ":" + password));
             myHeaders.append("Content-Type", "application/json");
-
-            let nama_user = document.getElementById('input-nama-user').value
-            let email_user = document.getElementById('input-email-user').value
-            // let username_user = document.getElementById('input-username').value
 
             const raw = JSON.stringify({
                 "nama_user": updateNama,
